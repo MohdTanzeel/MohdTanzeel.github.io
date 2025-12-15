@@ -214,13 +214,35 @@ body {
     margin-bottom: 2.5rem; 
 }
 
+.project-card {
+    display: flex;
+    flex-direction: column; /* Stacks content vertically */
+    height: 100%;           /* Forces card to be as tall as its neighbor */
+    justify-content: flex-start;
+    position: relative;
+}
+
+/* Add gap between description and badges */
+.project-card p {
+    margin-bottom: 1rem; /* Increases space before the badges start */
+    color: var(--muted-foreground);
+    flex-grow: 1; /* Helps push content apart evenly */
+}
+
+/* Ensure badges have space before the buttons */
+.project-card .skills-badges {
+    margin-bottom: .2rem; /* Adds gap between badges and buttons */
+}
+
 /* Project Links Container */
 .project-links {
     display: flex;
     gap: 1rem;
     justify-content: center; /* Centers the buttons in the card */
-    margin-top: 1.5rem;
+    /* margin-top: 1.5rem; */
     width: 100%;
+    margin-top: auto;
+    padding-top: 2rem;
 }
 
 /* The Button Styling Fix */
