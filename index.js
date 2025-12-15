@@ -69,16 +69,22 @@ document.addEventListener('click', function(event) {
 });
 
 // Add intersection observer for scroll animations
+// Add intersection observer for scroll animations
 const observerOptions = {
     threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
+    rootMargin: '0px 0px -50px 0px' // Changed from -100px to trigger earlier
 };
 
 const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
+    entries.forEach((entry, index) => { // Added index for staggering
         if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+            // Add a slight delay based on index for a "staggered" load effect
+            setTimeout(() => {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }, index * 100); 
+            
+            observer.unobserve(entry.target); // Stop observing once revealed
         }
     });
 }, observerOptions);
