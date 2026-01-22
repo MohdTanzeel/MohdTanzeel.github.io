@@ -100,3 +100,10 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 });
+
+document.getElementById("scheduleBtn").addEventListener("click", function () {
+  Cal("init", { origin: "https://cal.com" });
+  Cal("open", {
+    calLink: "tanzeel/discovery-call"
+  });
+});
