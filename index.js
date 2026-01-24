@@ -107,3 +107,30 @@ document.getElementById("scheduleBtn").addEventListener("click", function () {
     calLink: "tanzeel/discovery-call"
   });
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById("contactForm");
+    if(!form) return;
+
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const mailInput = form.querySelector("input[name='email']");
+        const messageInput = form.querySelector("textarea[name='message']");
+        const senderEmail = mailInput.value.trim();
+        const message = messageInput.value.trim();
+
+        if (!senderEmail || !message) {
+            alert("Please fill in all fields.");
+            return;
+        }
+        const subject = encodeURIComponent("New message from portfolio website");
+        const body = encodeURIComponent(
+            `From: ${senderEmail}\n\nMessage:\n${message}`
+        )
+        const mailtoURL = `mailto:mohdtanzeel00@gmail.com?subject=${subject}&body=${body}`;
+
+        window.location.href = mailtoURL;
+
+    })
+})
